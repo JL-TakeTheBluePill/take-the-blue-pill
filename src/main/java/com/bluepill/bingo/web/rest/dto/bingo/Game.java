@@ -11,6 +11,8 @@ public class Game {
     List<Product> drawn;
     List<Card> cards;
 
+    private static final int CARD_SIZE = 12;
+
     public Game(List<Product> products, int numberOfCards) {
         this.products = products;
         this.tumbowler = new LinkedList(products);
@@ -19,7 +21,7 @@ public class Game {
         cards = new LinkedList<>();
         for (int i = 0; i < numberOfCards; i++) {
             Collections.shuffle(products);
-            cards.add(new Card(products.subList(0, 12)));
+            cards.add(new Card(products.subList(0, CARD_SIZE)));
         }
     }
 
@@ -35,6 +37,10 @@ public class Game {
     }
 
     public boolean checkForFullHouse(List<String> ids) {
+        if (ids.size() != CARD_SIZE || drawn.size() < CARD_SIZE) {
+            return false;
+        }
+
         for (Product product : drawn) {
             if (!ids.contains(product.getId())) {
                 return false;

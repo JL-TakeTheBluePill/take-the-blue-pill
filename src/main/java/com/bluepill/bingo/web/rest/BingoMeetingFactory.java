@@ -32,17 +32,6 @@ public class BingoMeetingFactory {
     }
 
 
-    //Use this to stub out API call
-    List<Product> getProducts() {
-        List<Product> products = new ArrayList<Product>();
-
-        for ( int i = 0; i< 12 ;i++ ) {
-            Product product  = new Product( String.valueOf(i+1), "http://johnlewis.scene7.com/is/image/JohnLewis/23444402" + i);
-            products.add(product);
-        }
-        return products;
-    }
-
     List<Product> getProductsBySearch(String searchTerm) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters()

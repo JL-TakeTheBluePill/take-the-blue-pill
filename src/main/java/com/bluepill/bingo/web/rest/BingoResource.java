@@ -24,6 +24,7 @@ public class BingoResource {
 
     @RequestMapping(value = "/game", method = RequestMethod.GET)
     public ResponseEntity<Game> game() {
+        bingoMeetingFactory.newGame("blue");
         return new ResponseEntity<>(bingoMeetingFactory.getGame(), HttpStatus.OK);
     }
 

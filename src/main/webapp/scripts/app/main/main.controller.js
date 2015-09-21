@@ -39,11 +39,15 @@ angular.module('bluepillbingoApp')
                     checkedProductIds.push(products[i].id);
             }
 
-            console.log(checkedProductIds);
-
             BingoGame.checkForFullHouse(checkedProductIds).then(function (response) {
                 console.log("checkForFullHouse response: ", response.data);
                 $scope.fullHouseCheckOutcome = response.data;
+
+                if(response.data) {
+                    alert("We have a winner!");
+                } else {
+                    alert("Hold your horses!");
+                }
             });
         };
 
