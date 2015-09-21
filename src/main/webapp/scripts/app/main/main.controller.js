@@ -21,8 +21,31 @@ angular.module('bluepillbingoApp')
             });
         };
 
-        $scope.currentGame = $scope.game();
-        //$scope.drawnProduct = BingoGame.draw();
+        $scope.toggleBingoCardProduct = function(product) {
+            if (!product.checked && !$scope.drawnProduct) {
+                alert("Calm down idiot, wait for the tombola!");
+                return;
+            }
 
-        $scope.testVal = "bingo balls";
+            product.checked = !product.checked;
+        }
+
+        $scope.checkForFullHouse = function() {
+            var products = $scope.currentGame.cards[0].products;
+            var checkedProductIds = [];
+
+            for (var i=0; i<products.length; i++) {
+                if (products[i].checked)
+                    checkedProductIds.push(products[i].id);
+            }
+
+            console.log(checkedProductIds);
+
+            BingoGame.checkForFullHouse(checkedProductIds).then(function (response) {
+                console.log("checkForFullHouse response: ", response.data);
+                $scope.fullHouseCheckOutcome = response.data;
+            });
+        };
+
+        $scope.currentGame = $scope.game();
     });

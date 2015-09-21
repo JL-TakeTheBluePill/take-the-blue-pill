@@ -9,8 +9,8 @@
 
             .marked-product {
                 position: absolute;
-                font-size: 20pt;
-                left:40px;
+                font-size:60pt;
+                left:50px;
                 top: 40px;
             }
 
@@ -18,10 +18,10 @@
 
         <div class="col-md-8">
             <button type="button" class="btn btn-default" ng-click="draw()">
-                Draw
+                Draw from the tombola
             </button>
 
-            <br/>
+            <hr/>
 
             <div class="row">
                 <div class="col-xs-8 col-md-3" class="thumbnail" ng-if="drawnProduct">
@@ -36,14 +36,20 @@
 
                 <div class="row">
                     <div class="col-xs-8 col-md-3" ng-repeat="product in card.products">
-                        <a href="#" ng-class="product.clicked ? 'thumbnail shaded' : 'thumbnail'" ng-click="product.clicked = !product.clicked">
-                            <!-- <span ng-if="product.clicked" class="marked-product glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span> -->
+                        <a href="#" ng-class="product.checked ? 'thumbnail shaded' : 'thumbnail'" ng-click="toggleBingoCardProduct(product)">
+                            <span ng-if="product.checked" class="marked-product glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span>
                             <img src="{{product.imgURL}}?wid=200" alt="{{product.id}}">
                         </a>
                     </div>
                 </div>
 
             </div>
+
+            <button type="button" class="btn btn-default" ng-click="checkForFullHouse()">
+                Full House!
+            </button>
+
+            <hr/>
         </div>
     </div>
 </div>
