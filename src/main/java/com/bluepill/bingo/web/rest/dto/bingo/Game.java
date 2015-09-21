@@ -8,11 +8,13 @@ public class Game {
 
     List<Product> products;
     List<Product> tumbowler;
+    List<Product> drawn;
     List<Card> cards;
 
     public Game(List<Product> products, int numberOfCards) {
         this.products = products;
         this.tumbowler = new LinkedList(products);
+        this.drawn = new LinkedList();
 
         cards = new LinkedList<>();
         for (int i = 0; i < numberOfCards; i++) {
@@ -27,7 +29,18 @@ public class Game {
 
     public Product drawProduct() {
         Collections.shuffle(tumbowler);
-        return tumbowler.remove(0);
+        Product draw = tumbowler.remove(0);
+        drawn.add(draw);
+        return draw;
+    }
 
+    public boolean checkForFullHouse(List<String> ids) {
+        for (Product product : drawn) {
+            if (!ids.contains(product.getId())) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
