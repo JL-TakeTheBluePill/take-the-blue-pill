@@ -1,4 +1,4 @@
-package com.bluepill.bingo.web.rest.dto.bingo;
+package com.bluepill.bingo.web.rest;
 
 import com.bluepill.bingo.web.rest.dto.bingo.Game;
 import com.bluepill.bingo.web.rest.dto.bingo.Product;
@@ -7,11 +7,12 @@ import org.springframework.stereotype.Component;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Meeting {
+@Component
+public class BingoMeeting {
 
     Game game;
 
-    public Meeting() {
+    public BingoMeeting() {
         List<Product> products = new LinkedList<>();
         for (int i = 0; i < 90; i++) {
             products.add(new Product(String.valueOf(i), "img"+i));
