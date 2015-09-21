@@ -8,15 +8,21 @@ angular.module('bluepillbingoApp')
         });
 
         $scope.game = function() {
-            $scope.currentGame = BingoGame.game();
+             BingoGame.game().then(function (response) {
+                console.log("Fetched game: ", response.data);
+                $scope.currentGame = response.data;
+            });
         }
 
         $scope.draw = function () {
-            $scope.drawnProduct = BingoGame.draw();
+            BingoGame.draw().then(function (response) {
+                console.log("Fetched draw: ", response.data);
+                $scope.drawnProduct = response.data;
+            });
         };
 
-        $scope.currentGame = BingoGame.game();
-        $scope.drawnProduct = BingoGame.draw();
+        $scope.currentGame = $scope.game();
+        //$scope.drawnProduct = BingoGame.draw();
 
         $scope.testVal = "bingo balls";
     });
