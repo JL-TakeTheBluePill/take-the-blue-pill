@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.*;
 public class BingoResource {
 
     @Autowired
-    BingoMeeting bingoMeeting;
+    BingoMeetingFactory bingoMeetingFactory;
 
     @RequestMapping(value = "/game", method = RequestMethod.GET)
     public ResponseEntity<Game> game() {
-        return new ResponseEntity<>(bingoMeeting.getGame(), HttpStatus.OK);
+        return new ResponseEntity<>(bingoMeetingFactory.getGame(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/draw", method = RequestMethod.GET)
     public ResponseEntity<Product> draw() {
-        return new ResponseEntity<>(bingoMeeting.getGame().drawProduct(), HttpStatus.OK);
+        return new ResponseEntity<>(bingoMeetingFactory.getGame().drawProduct(), HttpStatus.OK);
     }
 }

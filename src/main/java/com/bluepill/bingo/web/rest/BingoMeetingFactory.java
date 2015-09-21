@@ -8,11 +8,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Component
-public class BingoMeeting {
+public class BingoMeetingFactory {
 
     Game game;
 
-    public BingoMeeting() {
+    public BingoMeetingFactory() {
         List<Product> products = new LinkedList<>();
         for (int i = 0; i < 90; i++) {
             products.add(new Product(String.valueOf(i), "img"+i));
