@@ -17,7 +17,7 @@ public class Game {
         cards = new LinkedList<>();
         for (int i = 0; i < numberOfCards; i++) {
             Collections.shuffle(products);
-            cards.add(new Card(products.subList(0, 11)));
+            cards.add(new Card(products.subList(0, 12)));
         }
     }
 
