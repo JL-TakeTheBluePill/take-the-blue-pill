@@ -37,7 +37,7 @@ public class BingoMeetingFactory {
         restTemplate.getMessageConverters()
             .add(0, new StringHttpMessageConverter(Charset.forName("UTF-8")));
 
-        SearchApiResponse response = restTemplate.getForObject("https://api.johnlewis.com/v1/products/search?q="+searchTerm+"&key=7xgtieKjAlGeGVUef2KgD2yktbtuVqwx&pageSize=90", SearchApiResponse.class);
+        SearchApiResponse response = restTemplate.getForObject("https://api.johnlewis.com/v1/products/search?q="+searchTerm+"&key=7xgtieKjAlGeGVUef2KgD2yktbtuVqwx&pageSize=30", SearchApiResponse.class);
 
         int productNum = 1;
         List<Product> products = response.getProducts();

@@ -3,8 +3,11 @@
 angular.module('bluepillbingoApp')
     .factory('BingoGame', function ($rootScope, $http) {
         return {
-            game: function () {
-                return $http.get('api/bingo/game');
+            game: function (searchTerm) {
+                if (!searchTerm)
+                    searchTerm = "blue";
+
+                return $http.get('api/bingo/game?searchTerm='+searchTerm);
             },
             draw: function () {
                 return $http.get('api/bingo/draw');

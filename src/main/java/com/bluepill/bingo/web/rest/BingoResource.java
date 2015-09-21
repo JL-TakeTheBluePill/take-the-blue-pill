@@ -23,8 +23,8 @@ public class BingoResource {
     BingoMeetingFactory bingoMeetingFactory;
 
     @RequestMapping(value = "/game", method = RequestMethod.GET)
-    public ResponseEntity<Game> game() {
-        bingoMeetingFactory.newGame("blue");
+    public ResponseEntity<Game> game(@RequestParam(value="searchTerm") String searchTerm) {
+        bingoMeetingFactory.newGame(searchTerm);
         return new ResponseEntity<>(bingoMeetingFactory.getGame(), HttpStatus.OK);
     }
 

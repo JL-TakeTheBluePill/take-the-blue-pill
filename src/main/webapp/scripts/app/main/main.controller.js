@@ -8,6 +8,8 @@ angular.module('bluepillbingoApp')
         });
 
         $scope.game = function() {
+            $scope.drawnProduct = undefined;
+
              BingoGame.game().then(function (response) {
                 console.log("Fetched game: ", response.data);
                 $scope.currentGame = response.data;
@@ -51,5 +53,19 @@ angular.module('bluepillbingoApp')
             });
         };
 
-        $scope.currentGame = $scope.game();
+        $scope.newGame = function() {
+            console.log($scope.searchTerm);
+
+            $scope.drawnProduct = undefined;
+            $scope.currentGame = undefined;
+
+            BingoGame.game($scope.searchTerm).then(function (response) {
+
+
+                console.log("Fetched new game with searchTerm"+$scope.searchTerm+": ", response.data);
+                $scope.currentGame = response.data;
+            });
+        }
+
+        $scope.currentGame = $scope.game("blue");
     });

@@ -2,7 +2,6 @@
     <div class="row">
 
         <style>
-
             .shaded img {
                 opacity: 0.3;
             }
@@ -13,13 +12,18 @@
                 left:50px;
                 top: 40px;
             }
-
         </style>
 
         <div class="col-md-8">
             <button type="button" class="btn btn-default" ng-click="draw()">
                 Draw from the tombola
             </button>
+
+            <button type="button" class="btn btn-default" ng-click="newGame()">
+                New Game
+            </button>
+
+            <input ng-model="searchTerm" name="searchTerm" placeholder="Enter search term" />
 
             <hr/>
 
