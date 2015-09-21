@@ -1,76 +1,49 @@
 <div ng-cloak>
     <div class="row">
 
-        <!--
-        <div class="col-md-4">
-            <span class="hipster img-responsive img-rounded"></span>
-        </div>
-        -->
+        <style>
+
+            .shaded img {
+                opacity: 0.3;
+            }
+
+            .marked-product {
+                position: absolute;
+                font-size: 20pt;
+                left:40px;
+                top: 40px;
+            }
+
+        </style>
 
         <div class="col-md-8">
-            <h1>Blue Pill Bingo</h1>
-            <p class="lead">This is your homepage</p>
-
-            <h2>Controls</h2>
-
-            <button ng-click="game()">
-                New Game
-            </button>
-
-            <button ng-click="draw()">
+            <button type="button" class="btn btn-default" ng-click="draw()">
                 Draw
             </button>
 
-            drawnProduct ID = <p ng-bind="drawnProduct.product.id"></p>
+            <br/>
 
-            testVal = {{testVal}}
+            <div class="row">
+                <div class="col-xs-8 col-md-3" class="thumbnail" ng-if="drawnProduct">
+                    <img  src="{{drawnProduct.imgURL}}?wid=200" alt="{{drawnProduct.id}}"/>
+                </div>
+            </div>
+
+            <hr/>
 
             <div ng-repeat="card in currentGame.cards">
                 <h2>Your Bingo Card</h2>
 
-                <div ng-repeat="product in card.products">
-                    {{product.id}} - {{product.imgURL}}
+                <div class="row">
+                    <div class="col-xs-8 col-md-3" ng-repeat="product in card.products">
+                        <a href="#" ng-class="product.clicked ? 'thumbnail shaded' : 'thumbnail'" ng-click="product.clicked = !product.clicked">
+                            <!-- <span ng-if="product.clicked" class="marked-product glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span> -->
+                            <img src="{{product.imgURL}}?wid=200" alt="{{product.id}}">
+                        </a>
+                    </div>
                 </div>
 
             </div>
-
-            End of list..
-
-            <p ng-bind="currentGame">{{currentGame.cards}}</p>
-
-
-
-            <!--
-            <div ng-switch="isAuthenticated()">
-                <div class="alert alert-success" ng-switch-when="true">
-                    You are logged in as user "{{account.login}}".
-                </div>
-
-                <div class="alert alert-warning" ng-switch-when="false">
-                    If you want to <a class="alert-link" href="#/login">authenticate</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
-                </div>
-
-                <div class="alert alert-warning" ng-switch-when="false">
-                    You don't have an account yet? <a class="alert-link" href="#/register">Register a new account</a>
-                </div>
-            </div>
-
-            <p>
-                If you have any question on JHipster:
-            </p>
-
-            <ul>
-                <li><a href="http://jhipster.github.io/" target="_blank">JHipster homepage</a></li>
-                <li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank">JHipster on Stack Overflow</a></li>
-                <li><a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank">JHipster bug tracker</a></li>
-                <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank">JHipster public chat room</a></li>
-                <li><a href="https://twitter.com/java_hipster" target="_blank" >contact @java_hipster on Twitter</a></li>
-            </ul>
-
-            <p>
-             <span>If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank">Github</a>!
-            </p>
-            -->
         </div>
     </div>
 </div>
