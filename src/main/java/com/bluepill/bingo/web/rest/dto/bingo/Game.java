@@ -41,10 +41,16 @@ public class Game {
             return false;
         }
 
-        for (Product product : drawn) {
-            if (!ids.contains(product.getId())) {
+        List<String> drawnIds = new LinkedList<String>();
+        for (Product draw : drawn) {
+            drawnIds.add(draw.getId());
+        }
+
+        for (String id : ids) {
+            if (!drawnIds.contains(id)) {
                 return false;
             }
+
         }
 
         return true;
