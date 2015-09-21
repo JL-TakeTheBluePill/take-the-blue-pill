@@ -27,6 +27,11 @@ public class BingoResource {
         return new ResponseEntity<>(bingoMeetingFactory.getGame(), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/draw", method = RequestMethod.GET)
+    public ResponseEntity<Product> draw() {
+        return new ResponseEntity<>(bingoMeetingFactory.getGame().drawProduct(), HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/checkForFullHouse", method = RequestMethod.GET)
     public ResponseEntity<Boolean> checkHouse(@RequestParam(value="id") String[] ids) {
         return new ResponseEntity<>(bingoMeetingFactory.getGame().checkForFullHouse(Arrays.asList(ids)), HttpStatus.OK);
