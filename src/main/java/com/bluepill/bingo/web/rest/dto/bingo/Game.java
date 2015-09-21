@@ -10,25 +10,22 @@ public class Game {
     List<Product> tumbowler;
     List<Card> cards;
 
-    public Game(List<Product> products, int cards) {
+    public Game(List<Product> products, int numberOfCards) {
         this.products = products;
         this.tumbowler = new LinkedList(products);
 
-        for (int i = 0; i < cards; i++) {
-            addCard();
+        cards = new LinkedList<>();
+        for (int i = 0; i < numberOfCards; i++) {
+            Collections.shuffle(products);
+            cards.add(new Card(products.subList(0, 15)));
         }
     }
 
-    public void addCard() {
-        Collections.shuffle(products);
-        Card card = new Card(products.subList(0, 15));
+    public List<Card> getCards() {
+        return cards;
     }
 
-    public Card getCard(int index) {
-        return cards.get(index);
-    }
-
-    public Product getProduct() {
+    public Product drawProduct() {
         Collections.shuffle(tumbowler);
         return tumbowler.remove(0);
 
