@@ -3,6 +3,7 @@ package com.bluepill.bingo.web.rest;
 import com.bluepill.bingo.web.rest.dto.bingo.Game;
 import com.bluepill.bingo.web.rest.dto.bingo.Product;
 import com.bluepill.bingo.web.rest.dto.bingo.SearchApiResponse;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -54,6 +55,9 @@ public class BingoMeetingFactory {
         List<Product> products = response.getProducts();
         for (Product product : products) {
             product.setId(String.valueOf(productNum++));
+
+            String urlWithoutQueryParms = StringUtils.substringBefore(product.getImage(), "?");
+            product.setImage(urlWithoutQueryParms);
         }
 
         return response.getProducts();
