@@ -1,0 +1,21 @@
+{
+  "generator-jhipster": {
+    "baseName": "bluepillbingo",
+    "packageName": "com.bluepill.bingo",
+    "packageFolder": "com/bluepill/bingo",
+    "authenticationType": "session",
+    "hibernateCache": "no",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "no",
+    "useSass": false,
+    "buildTool": "gradle",
+    "frontendBuilder": "grunt",
+    "javaVersion": "8",
+    "enableTranslation": false,
+    "rememberMeKey": "c86ea4652fb999d9e7670e4c2a88bcd5c93fbebd"
+  }
+}
