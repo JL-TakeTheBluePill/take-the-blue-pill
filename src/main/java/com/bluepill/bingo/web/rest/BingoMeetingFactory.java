@@ -21,14 +21,13 @@ public class BingoMeetingFactory {
 
     Game game;
 
-    public BingoMeetingFactory() throws UnrecoverableKeyException, URISyntaxException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
-
-        List<Product> products = getProductsBySearch();
-
-        game = new Game(products, 1);
+    public Game getGame() {
+        return game;
     }
 
-    public Game getGame() {
+    public Game newGame(String searchTerm) {
+        List<Product> products = getProductsBySearch(searchTerm);
+        game = new Game(products, 1);
         return game;
     }
 
@@ -44,12 +43,12 @@ public class BingoMeetingFactory {
         return products;
     }
 
-    List<Product> getProductsBySearch() {
+    List<Product> getProductsBySearch(String searchTerm) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters()
             .add(0, new StringHttpMessageConverter(Charset.forName("UTF-8")));
 
-        SearchApiResponse response = restTemplate.getForObject("https://api.johnlewis.com/v1/products/search?q=blue&key=7xgtieKjAlGeGVUef2KgD2yktbtuVqwx&pageSize=90", SearchApiResponse.class);
+        SearchApiResponse response = restTemplate.getForObject("https://api.johnlewis.com/v1/products/search?q="+searchTerm+"&key=7xgtieKjAlGeGVUef2KgD2yktbtuVqwx&pageSize=90", SearchApiResponse.class);
 
         int productNum = 1;
         List<Product> products = response.getProducts();
@@ -62,4 +61,5 @@ public class BingoMeetingFactory {
 
         return response.getProducts();
     }
+
 }
